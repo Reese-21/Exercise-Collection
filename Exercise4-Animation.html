@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 4-Screensaver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-template-rows: 60px 1fr 60px;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .grid-item {
+            text-align: center;
+        }
+
+        header {
+            background-color: #c9c9c9;
+            grid-area: 1/1/2/9;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-Items: center;
+            color: black;
+            font-size: 16px;
+            font-family: "D-DIN Condensed", Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            border-bottom: 2px solid black;
+        }
+
+        .grid-item-middle {
+            background-color: #c9c9c9;
+            grid-row: span 1;
+            grid-column: span 8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            background-color: #c9c9c9;
+            grid-area: 3/1/4/9;
+            border-top: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(255, 255, 255);
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            /*space for images*/
+        }
+
+        .image-container img {
+
+            width: 40%;
+            height: 80%;
+            object-fit: cover;
+            /*no stretching images*/
+            /*the image properties inside the image-container*/
+        }
+
+        #two {
+            display: none;
+            /* Initially hide the second image */
+        }
+
+        .image-container:hover #one {
+            display: none;
+            /* Hide the first image on hover */
+        }
+
+        .image-container:hover #two {
+            display: block;
+            /* Show the second image on hover */
+        }
+
+        h2 {
+            font-family: "Freight Text", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        a:link {
+            color: rgb(120, 46, 169);
+            text-decoration: underline;
+
+        }
+
+        a:visited {
+            color: pink;
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: rgb(255, 255, 255);
+            background-color: rgb(0, 0, 0);
+            text-decoration: underline;
+            font-size: 30px;
+        }
+
+        input {
+            margin: 0.4rem;
+        }
+
+        .footer-animation {
+            background-color: none;
+            animation: move 2s infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(100px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <header>
+            <p>FURNITURE CREATURES</p>
+            <p>Annotated Bibliography</p>
+            <p>Stories</p>
+            <p>Objects</p>
+        </header>
+
+
+        <div class="grid-item-middle">
+            <div class="image-container">
+                <img id='one' src='images-for-ex3\chair1.jpg'>
+                <img id='two' src='images-for-ex3\chair2.jpg'>
+                <img id='two' src='images-for-ex3\chair3.jpg'>
+                <img id='two' src='images-for-ex3\chair4.jpg'>
+                <img id='two' src='images-for-ex3\chair5.jpg'>
+                <img id='two' src='images-for-ex3\chair6.jpg'>
+                <img id='two' src='images-for-ex3\chair8.jpg'>
+            </div>
+
+
+            <br>
+            <h3><a href="https://hyjreesepfo.cargo.site/2-8-The-Furniture-Creatures-Animation" target="_blank">Check Out
+                    My Video Here!</a></h4>
+        </div>
+
+
+        <footer>
+            <div class="footer-animation">Reese's Thesis Website 2023-2024 (Maybe)</div>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>
