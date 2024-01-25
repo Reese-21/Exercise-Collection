@@ -57,37 +57,21 @@
 
         .image-container {
             position: relative;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(255, 255, 255);
+            width: 20%;
+            height: 40%;
+            background-color: #c9c9c9;
             display: flex;
             justify-content: center;
-            align-items:center;
+            align-items: center;
             /*space for images*/
         }
 
         .image-container img {
-
-            width: 40%;
-            height: 80%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             /*no stretching images*/
             /*the image properties inside the image-container*/
-        }
-
-        #two {
-            display: none;
-            /* Initially hide the second image */
-        }
-
-        .image-container:hover #one {
-            display: none;
-            /* Hide the first image on hover */
-        }
-
-        .image-container:hover #two {
-            display: block;
-            /* Show the second image on hover */
         }
 
         h2 {
@@ -118,21 +102,117 @@
 
         .footer-animation {
             background-color: none;
-            animation: move 2s infinite;
+            animation: movefooter 2s infinite;
         }
 
-        @keyframes move {
+        @keyframes movefooter {
             0% {
                 transform: translateX(0);
             }
 
             50% {
-                transform: translateX(100px);
+                transform: translateX(50px);
             }
 
             100% {
                 transform: translateX(0);
             }
+        }
+
+        /*footer animation*/
+
+
+
+
+
+
+        @media (max-width: 599px) {}
+
+        @media (min-width: 600px) and (max-width: 799px) {
+            .image-container {
+                animation: spinchair 3s infinite;
+                width: 70%;
+                height: 40%
+            }  
+            @keyframes spinchair {
+                0% {
+                    transform: translateX(200px) translateY(0px) rotate(0deg);
+                }
+                25% {
+                    transform: translateX(0px) translateY(-150px) rotate(720deg);
+                }
+                50% {
+                    transform: translateX(-100px) translateY(300px) rotate(1440deg);
+                }
+                75% {
+                    transform: translateX(-200px) translateY(150px) rotate(360deg);
+                }
+                100% {
+                    transform: translateX(200px) translateY(0px) rotate(0deg);
+                }
+            }
+        }
+
+        @media (min-width: 800px) and (max-width: 999px) {
+        .image-container {
+                animation: bouncechair 4s infinite;
+            }
+
+            @keyframes bouncechair {
+                0% {
+                    transform: translateX(400px) translateY(0px);
+                }
+                25% {
+                    transform: translateX(0px) translateY(-150px);
+                }
+                50% {
+                    transform: translateX(-200px) translateY(300px);
+                }
+                74% {
+                    transform: translateX(-400px) translateY(150px) rotateY(0deg);
+                }
+                75% {
+                    transform: translateX(-400px) translateY(150px) rotateY(180deg);
+                }
+                100% {
+                    transform: translateX(400px) translateY(0px) rotateY(180deg);
+                }
+            }
+        }
+        
+        @media (min-width: 1000px) {
+            .image-container {
+                animation: movechair 4s infinite, flip 4s infinite;
+            }
+
+            @keyframes movechair {
+                0% {
+                    transform: translateX(800px) rotateY(0);
+                }
+
+                45% {
+                    transform: translateX(-800px);
+                }
+
+                50% {
+                    transform: translateX(-800px) rotateY(180deg);
+                }
+
+                95% {
+                    transform: translateX(800px) rotateY(180deg);
+                }
+
+                100% {
+                    transform: translateX(800px) rotateY(0);
+                }
+            }
+
+            /*flip and move are both property transform, don't use 2 @keyframes, 
+            otherwise, the first one will play once and the second one will loop 
+            by it self.*/
+            /*name of animation is self-created, animation with the same name will
+            move in the same way.*/
+
         }
     </style>
 </head>
@@ -151,12 +231,6 @@
         <div class="grid-item-middle">
             <div class="image-container">
                 <img id='one' src='images-for-ex3\chair1.jpg'>
-                <img id='two' src='images-for-ex3\chair2.jpg'>
-                <img id='two' src='images-for-ex3\chair3.jpg'>
-                <img id='two' src='images-for-ex3\chair4.jpg'>
-                <img id='two' src='images-for-ex3\chair5.jpg'>
-                <img id='two' src='images-for-ex3\chair6.jpg'>
-                <img id='two' src='images-for-ex3\chair8.jpg'>
             </div>
 
 
