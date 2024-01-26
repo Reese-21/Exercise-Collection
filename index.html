@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 3-Holy Grail</title>
+    <title>Exercise 4-Screensaver</title>
     <style>
         * {
             margin: 0;
@@ -14,7 +14,7 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: 60px 1fr 60px;
+            grid-template-rows: 60px 1fr 60px 60px;
             height: 100vh;
             width: 100vw;
         }
@@ -36,99 +36,61 @@
             border-bottom: 2px solid black;
         }
 
-        .grid-item-left {
-            background-color: #c9c9c9;
-            grid-row: span 1;
-            grid-column: span 2;
-            padding: 20px;
-            border-right: dashed darkgray;
-            overflow-y: scroll;
-        }
-
         .grid-item-middle {
             background-color: #c9c9c9;
             grid-row: span 1;
-            grid-column: span 5;
+            grid-column: span 8;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .grid-item-right {
-            background-color: rgb(0, 0, 0);
+        .grid-item-h3 {
+            background-color: #c9c9c9;
             grid-row: span 1;
-            grid-column: span 0;
-            padding: 10px;
-            font-size: 30px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: rgb(255, 255, 255);
+            grid-column: span 8;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
+
+        .more-space {
+            display: none;
+        }
+
+        .weee{
+            display:none;
+        }
+
 
         footer {
             background-color: #c9c9c9;
-            grid-area: 3/1/4/9;
+            grid-area: 4/1/5/9;
             border-top: 2px solid black;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .grid-img-container {
-            /* the center grid in grid-middle */
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 1fr 1fr;
-            gap: 10px;
-            /* Space between grid items */
-            width: 70%;
-            /* Fixed width for the grid */
-            height: 70%;
-            /* Fixed height for the grid */
-            border: 5px dashed rgb(144, 144, 144);
-        }
-
-        .grid-item {
-            /* 6 blocks for images in the grid-img-container */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f0f0f0;
-        }
-
         .image-container {
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            /*not sure what this is?*/
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: #c9c9c900;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*space for images*/
         }
 
         .image-container img {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             /*no stretching images*/
-            /*all the images in image-container*/
-        }
-
-        #two {
-            display: none;
-            /* Initially hide the second image */
-        }
-
-        .image-container:hover #one {
-            display: none;
-            /* Hide the first image on hover */
-        }
-
-        .image-container:hover #two {
-            display: block;
-            /* Show the second image on hover */
+            /*the image properties inside the image-container*/
         }
 
         h2 {
@@ -157,18 +119,18 @@
             margin: 0.4rem;
         }
 
-        .footer-animation{
+        .footer-animation {
             background-color: none;
-            animation: move 2s infinite;
+            animation: movefooter 2s infinite;
         }
 
-        @keyframes move {
+        @keyframes movefooter {
             0% {
                 transform: translateX(0);
             }
 
             50% {
-                transform: translateX(100px);
+                transform: translateX(50px);
             }
 
             100% {
@@ -176,7 +138,199 @@
             }
         }
 
+        /*footer animation*/
 
+
+
+
+
+
+        @media (max-width: 699px) {
+            .image-container {
+                animation: limitedchair 0.2s infinite alternate;
+            }
+
+            @keyframes limitedchair {
+                0% {
+                    transform: translateY(50px);
+                }
+
+                100% {
+                    transform: translateY(-50px);
+                }
+            }/*image animation*/
+
+            .more-space {
+                display:block;
+                animation: appear 3s linear;
+            }
+
+            @keyframes appear {
+                0% {
+                    display: none;
+                    opacity: 0;
+                }
+
+                1% {
+                    display: block;
+                    opacity: 0;
+                }
+
+                100% {
+                    display: block;
+                    opacity: 1;
+                }
+            }/*transparency change animation*/
+
+        }
+
+        @media (min-width: 700px) and (max-width: 899px) {
+            .image-container {
+                animation: spinchair 2s infinite;
+            }
+
+            @keyframes spinchair {
+                0% {
+                    transform: translateX(200px) translateY(0px) rotate(0deg);
+                }
+
+                25% {
+                    transform: translateX(0px) translateY(-150px) rotate(720deg);
+                }
+
+                50% {
+                    transform: translateX(-100px) translateY(300px) rotate(1440deg);
+                }
+
+                75% {
+                    transform: translateX(-200px) translateY(150px) rotate(360deg);
+                }
+
+                100% {
+                    transform: translateX(200px) translateY(0px) rotate(0deg);
+                }
+            }
+            .grid-item-middle {
+                animation: color 1s infinite;
+                animation-delay: 3s;
+                background-color: rgb(239, 165, 75);
+            }
+            @keyframes color {
+                0% {
+                    background-color: rgb(239, 165, 75);
+                }
+
+                25% {
+                    background-color: rgb(222, 94, 94);
+                }
+
+                50% {
+                    background-color: rgb(94, 177, 222);
+                }
+
+                75%{
+                    background-color: rgb(211, 222, 94);
+                }
+
+                100% {
+                    background-color: rgb(212, 106, 239);
+                }
+            }
+        }
+
+        @media (min-width: 900px) and (max-width: 1099px) {
+            .image-container {
+                animation: bouncechair 2s infinite;
+            }
+
+            @keyframes bouncechair {
+                0% {
+                    transform: translateX(400px) translateY(0px);
+                }
+
+                25% {
+                    transform: translateX(0px) translateY(-150px);
+                }
+
+                50% {
+                    transform: translateX(-200px) translateY(300px);
+                }
+
+                74% {
+                    transform: translateX(-400px) translateY(150px) rotateY(0deg);
+                }
+
+                75% {
+                    transform: translateX(-400px) translateY(150px) rotateY(180deg);
+                }
+
+                100% {
+                    transform: translateX(400px) translateY(0px) rotateY(180deg);
+                }
+            }
+        }
+
+        @media (min-width: 1100px) {
+            .image-container {
+                animation: movechair 4s infinite;
+            }
+
+            @keyframes movechair {
+                0% {
+                    transform: translateX(800px) rotateY(0);
+                }
+
+                45% {
+                    transform: translateX(-800px);
+                }
+
+                50% {
+                    transform: translateX(-800px) rotateY(180deg);
+                }
+
+                95% {
+                    transform: translateX(800px) rotateY(180deg);
+                }
+
+                100% {
+                    transform: translateX(800px) rotateY(0);
+                }
+            }
+
+            .weee {
+                animation: moveweee 4s infinite;
+                display:block;
+            }
+
+            @keyframes moveweee {
+                0% {
+                    transform: translateX(800px);
+                }
+
+                45% {
+                    transform: translateX(-800px);
+                }
+
+                50% {
+                    transform: translateX(-800px);
+                }
+
+                95% {
+                    transform: translateX(800px);
+                }
+
+                100% {
+                    transform: translateX(800px);
+                }
+            }
+
+            /*flip and move are both property transform, don't use 2 @keyframes, 
+            otherwise, the first one will play once and the second one will loop 
+            by it self.*/
+            /*name of animation is self-created, animation with the same name will
+            move in the same way.*/
+
+        }
     </style>
 </head>
 
@@ -190,76 +344,26 @@
             <p>Objects</p>
         </header>
 
-        <div class="grid-item-left">
-            <h2 style="margin-top: 20px; margin-bottom: 20px;">Annotated Bibliography</h2>
-
-            <h3 style="margin: 10px;">RELATIONSHIP</h3>
-            <p>R.Input 3: 断捨離</p>
-            <p>R.Input 25: Alexa</p>
-            <p>R.Input 24: Taking Things Seriously</p>
-            <p>R.Input 11: Build A Bear</p>
-
-            <h3 style="margin: 10px;">CHARACTER</h3>
-            <p>C.Input 26: Vacuum Cleaner Research</p>
-            <p>C.Input 2: en-nendo</p>
-            <p>C.Input 4: Concept Bathtub</p>
-            <p>C.Input 7: Hello Kitty Wiki</p>
-
-            <h3 style="margin: 10px;">NARRATIVE</h3>
-            <p>N.Input 27: あ</p>
-            <p>N.Input 29: Pareidolia</p>
-            <p>N.Input 5: Genshin Impact</p>
-            <p>N.Input 21: Memes, Funny short videos</p>
-
-        </div>
-
 
         <div class="grid-item-middle">
-            <div class="grid-img-container">
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair8.jpg'>
-                </div>
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair2.jpg'>
-                </div>
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair3.jpg'>
-                </div>
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair4.jpg'>
-                </div>
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair5.jpg'>
-                </div>
-                <div class="grid-item image-container">
-                    <img id='one' src='images-for-ex3\chair1.jpg'>
-                    <img id='two' src='images-for-ex3\chair6.jpg'>
-                </div>
+            <div class="image-container">
+                <img id='one' src='images-for-ex3\chair1.jpg'>
             </div>
-            <br>
-            <h3><a href="https://hyjreesepfo.cargo.site/2-8-The-Furniture-Creatures-Animation" target="_blank">Check Out
-                    My Video Here!</a></h4>
         </div>
 
-        <div class="grid-item-right">
-            <div>
-                <input type="checkbox" id="scales" name="Stupidity" checked />
-                <label for="scales">30% Stupidity</label>
+
+
+        <div class="grid-item-h3">
+            <div class="more-space">
+                <h3>HEY I NEED MORE SPACE... QAQ</h3>
             </div>
-            <div>
-                <input type="checkbox" id="scales" name="Sturdy" checked />
-                <label for="scales">30% Sturdy</label>
-            </div>
-            <div>
-                <input type="checkbox" id="scales" name="Sentiment" checked />
-                <label for="scales">40% Sentiment</label>
+
+            <div class="weee">
+                <h3>WEEEEEEE-------</h3>
             </div>
         </div>
+
+
 
         <footer>
             <div class="footer-animation">Reese's Thesis Website 2023-2024 (Maybe)</div>
