@@ -14,7 +14,7 @@
         .grid-container {
             display: grid;
             grid-template-columns: repeat(8, 1fr);
-            grid-template-rows: 60px 1fr 60px;
+            grid-template-rows: 60px 1fr 60px 60px;
             height: 100vh;
             width: 100vw;
         }
@@ -46,9 +46,28 @@
             align-items: center;
         }
 
+        .grid-item-h3 {
+            background-color: #c9c9c9;
+            grid-row: span 1;
+            grid-column: span 8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .more-space {
+            display: none;
+        }
+
+        .weee{
+            display:none;
+        }
+
+
         footer {
             background-color: #c9c9c9;
-            grid-area: 3/1/4/9;
+            grid-area: 4/1/5/9;
             border-top: 2px solid black;
             display: flex;
             justify-content: center;
@@ -57,9 +76,9 @@
 
         .image-container {
             position: relative;
-            width: 20%;
-            height: 40%;
-            background-color: #c9c9c9;
+            width: 100px;
+            height: 100px;
+            background-color: #c9c9c900;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,8 +86,8 @@
         }
 
         .image-container img {
-            width: 100%;
-            height: 100%;
+            width: 300px;
+            height: 300px;
             object-fit: cover;
             /*no stretching images*/
             /*the image properties inside the image-container*/
@@ -126,63 +145,108 @@
 
 
 
-        @media (max-width: 599px) {}
-
-        @media (min-width: 600px) and (max-width: 799px) {
+        @media (max-width: 699px) {
             .image-container {
-                animation: spinchair 3s infinite;
-                width: 70%;
-                height: 40%
-            }  
+                animation: limitedchair 0.2s infinite alternate;
+            }
+
+            @keyframes limitedchair {
+                0% {
+                    transform: translateY(50px);
+                }
+
+                100% {
+                    transform: translateY(-50px);
+                }
+            }/*image animation*/
+
+            .more-space {
+                display:block;
+                animation: appear 3s linear;
+            }
+
+            @keyframes appear {
+                0% {
+                    display: none;
+                    opacity: 0;
+                }
+
+                1% {
+                    display: block;
+                    opacity: 0;
+                }
+
+                100% {
+                    display: block;
+                    opacity: 1;
+                }
+            }/*transparency change animation*/
+
+        }
+
+        @media (min-width: 700px) and (max-width: 899px) {
+            .image-container {
+                animation: spinchair 2s infinite;
+            }
+
             @keyframes spinchair {
                 0% {
                     transform: translateX(200px) translateY(0px) rotate(0deg);
                 }
+
                 25% {
                     transform: translateX(0px) translateY(-150px) rotate(720deg);
                 }
+
                 50% {
                     transform: translateX(-100px) translateY(300px) rotate(1440deg);
                 }
+
                 75% {
                     transform: translateX(-200px) translateY(150px) rotate(360deg);
                 }
+
                 100% {
                     transform: translateX(200px) translateY(0px) rotate(0deg);
                 }
             }
         }
 
-        @media (min-width: 800px) and (max-width: 999px) {
-        .image-container {
-                animation: bouncechair 4s infinite;
+        @media (min-width: 900px) and (max-width: 1099px) {
+            .image-container {
+                animation: bouncechair 2s infinite;
             }
 
             @keyframes bouncechair {
                 0% {
                     transform: translateX(400px) translateY(0px);
                 }
+
                 25% {
                     transform: translateX(0px) translateY(-150px);
                 }
+
                 50% {
                     transform: translateX(-200px) translateY(300px);
                 }
+
                 74% {
                     transform: translateX(-400px) translateY(150px) rotateY(0deg);
                 }
+
                 75% {
                     transform: translateX(-400px) translateY(150px) rotateY(180deg);
                 }
+
                 100% {
                     transform: translateX(400px) translateY(0px) rotateY(180deg);
                 }
             }
         }
-        
-        @media (min-width: 1000px) {
+
+        @media (min-width: 1100px) {
             .image-container {
-                animation: movechair 4s infinite, flip 4s infinite;
+                animation: movechair 4s infinite;
             }
 
             @keyframes movechair {
@@ -204,6 +268,33 @@
 
                 100% {
                     transform: translateX(800px) rotateY(0);
+                }
+            }
+
+            .weee {
+                animation: moveweee 4s infinite;
+                display:block;
+            }
+
+            @keyframes moveweee {
+                0% {
+                    transform: translateX(800px);
+                }
+
+                45% {
+                    transform: translateX(-800px);
+                }
+
+                50% {
+                    transform: translateX(-800px);
+                }
+
+                95% {
+                    transform: translateX(800px);
+                }
+
+                100% {
+                    transform: translateX(800px);
                 }
             }
 
@@ -232,12 +323,20 @@
             <div class="image-container">
                 <img id='one' src='images-for-ex3\chair1.jpg'>
             </div>
-
-
-            <br>
-            <h3><a href="https://hyjreesepfo.cargo.site/2-8-The-Furniture-Creatures-Animation" target="_blank">Check Out
-                    My Video Here!</a></h4>
         </div>
+
+
+
+        <div class="grid-item-h3">
+            <div class="more-space">
+                <h3>HEY I NEED MORE SPACE... QAQ</h3>
+            </div>
+
+            <div class="weee">
+                <h3>WEEEEEEE-------</h3>
+            </div>
+        </div>
+
 
 
         <footer>
