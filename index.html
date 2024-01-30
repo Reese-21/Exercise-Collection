@@ -4,35 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise5-javascript</title>
+    <title>Aim: image change in relation to mouse position</title>
+
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #img1 {
+            display: block;
+        }
+    </style>
+
+
+
+
 </head>
 
 <body>
-    <img id="chairimage" src='images-for-ex3/chair1.jpg'>
+    <p id="mousePositionDisplay">Move your mouse to see the position!</p>
+    <img id='img1' src='images-for-ex3/chair1.jpg'>
+
 
     <script>
-        let count = 1;
-        let images = ['images-for-ex3/chair1.jpg',
-            'images-for-ex3/chair2.jpg',
-            'images-for-ex3/chair3.jpg',
-            'images-for-ex3/chair4.jpg',
-            'images-for-ex3/chair5.jpg',
-            'images-for-ex3/chair6.jpg',
-            'images-for-ex3/chair7.jpg',
-            'images-for-ex3/chair8.jpg',];
-        // array
+        function updateMousePosition(event) {
+            var x = event.clientX; // Get the horizontal coordinate
+            var y = event.clientY; // Get the vertical coordinate
+            var coor = "X coords: " + x + ", Y coords: " + y;
+            document.getElementById("mousePositionDisplay").textContent = coor;
+            // change the textcontent
+        }
 
-        document.getElementById('chairimage').addEventListener('click', function () {
-            chairimage.src = images[count]; //change image, must write src!!!!!!
+        // Add event listener for mouse movement
+        document.addEventListener("mousemove", updateMousePosition);
 
 
-        if (count < images.length-1) {
-            count++;}
+        document.addEventListener("mousemove", function (e) {
+            let width = window.innerWidth;
+            // the width changes with the browser size
+            let height = window.innerHeight;
+            let mouseX = e.clientX;
+            let mouseY = e.clientY;
+            let image = document.getElementById('img1');
+            // id needs to be in ''
 
-        else {
-            count = 0;}// Reset count to cycle through colors again
-        
+            if (mouseX < width / 2 && mouseY < height / 2) {
+                image.src = 'images-for-ex3/chair1.jpg';
+            // must write image.src=
+            }
+
+            if (mouseX >= width / 2 && mouseY < height / 2) {
+                image.src = 'images-for-ex3/chair2.jpg';
+            }
+
+            if (mouseX >= width /2 && mouseY >= height / 2) {
+                image.src = 'images-for-ex3/chair3.jpg';
+            }
+
+            if (mouseX < width / 2 && mouseY >= height / 2) {
+                image.src = 'images-for-ex3/chair4.jpg';
+            }
+
         })
+
+
     </script>
 </body>
 

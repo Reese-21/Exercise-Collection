@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise5-javascript</title>
+</head>
+
+<body>
+    <img id="chairimage" src='images-for-ex3/chair1.jpg'>
+
+    <script>
+        let count = 1;
+        let images = ['images-for-ex3/chair1.jpg',
+            'images-for-ex3/chair2.jpg',
+            'images-for-ex3/chair3.jpg',
+            'images-for-ex3/chair4.jpg',
+            'images-for-ex3/chair5.jpg',
+            'images-for-ex3/chair6.jpg',
+            'images-for-ex3/chair7.jpg',
+            'images-for-ex3/chair8.jpg',];
+        // array
+
+        document.getElementById('chairimage').addEventListener('click', function () {
+            chairimage.src = images[count]; //change image, must write src!!!!!!
+
+
+        if (count < images.length-1) {
+            count++;}
+
+        else {
+            count = 0;}// Reset count to cycle through colors again
+        
+        })
+    </script>
+</body>
+
+</html>
