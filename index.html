@@ -4,83 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Exercise7-OpenSource</title>
+    <title>Pointer Trail with Image</title>
 
     <style>
         body {
             margin: 0;
-            padding: 0;
-            background: #f4ecec;
-            /* Set your desired background color */
+            overflow: hidden;
         }
 
-        .content {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: #fff;
-            /* Set your desired content background color */
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        .trail-dot {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            pointer-events: none;
         }
-
-        /* Add dotted background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background-image: radial-gradient(circle, #000 1px, transparent 1px);
-            background-size: 20px 20px;
-            /* Adjust the size of the dots */
-        }
-
-
-        #current-time {
-            font-family: fantasy;
-            font-size: 30px;
-        }
-
     </style>
 </head>
 
-
-
-
 <body>
-    <div class="content">
-        <h1>How Are You?</h1>
-        <!-- Add more content as needed -->
-        <div id="current-time"></div> <!-- This is where the current time will be displayed -->
-
-    </div>
-
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const trailLength = 10; // Number of trail dots
+            const trailDots = [];
 
-        document.addEventListener("DOMContentLoaded", function () {
-            // Function to update the current time
-            function updateCurrentTime() {
-                // Set the time zone to Eastern Time (ET)
-                const currentTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
-
-                // Display the current time in the designated div
-                document.getElementById("current-time").textContent = `Current Time (Eastern Time): ${currentTime}`;
+            for (let i = 0; i < trailLength; i++) {
+                const dot = document.createElement('img');
+                dot.className = 'trail-dot';
+                dot.src = 'images-for-ex3/chair1.jpg'; // Set the correct image path
+                document.body.appendChild(dot);
+                trailDots.push(dot);
             }
 
-            // Update the current time initially
-            updateCurrentTime();
+            document.addEventListener('mousemove', function (event) {
+                const mouseX = event.pageX;
+                const mouseY = event.pageY;
 
-            // Update the current time every second (1000 milliseconds)
-            setInterval(updateCurrentTime, 1000);
+                // Update the positions of trail dots based on historical mouse coordinates
+                for (let i = trailLength - 1; i > 0; i--) {
+                    const prevDot = trailDots[i - 1];
+                    const currentDot = trailDots[i];
+
+                    currentDot.style.left = prevDot.style.left;
+                    currentDot.style.top = prevDot.style.top;
+                }
+
+                // Place the first trail dot at the current mouse position
+                trailDots[0].style.left = mouseX - 25 + 'px'; // Adjust position for the image size
+                trailDots[0].style.top = mouseY - 25 + 'px';  // Adjust position for the image size
+            });
         });
-
     </script>
-
-    </div>
 </body>
 
 </html>

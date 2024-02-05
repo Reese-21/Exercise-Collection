@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Exercise7-OpenSource</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f4ecec;
+            /* Set your desired background color */
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            /* Set your desired content background color */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add dotted background */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(circle, #000 1px, transparent 1px);
+            background-size: 20px 20px;
+            /* Adjust the size of the dots */
+        }
+
+
+        #current-time {
+            font-family: fantasy;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+
+
+
+
+<body>
+    <div class="content">
+        <h1>How Are You?</h1>
+        <!-- Add more content as needed -->
+        <div id="current-time"></div> <!-- This is where the current time will be displayed -->
+
+    </div>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to update the current time
+            function updateCurrentTime() {
+                // Set the time zone to Eastern Time (ET)
+                const currentTime = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+
+                // Display the current time in the designated div
+                document.getElementById("current-time").textContent = `Current Time (Eastern Time): ${currentTime}`;
+            }
+
+            // Update the current time initially
+            updateCurrentTime();
+
+            // Update the current time every second (1000 milliseconds)
+            setInterval(updateCurrentTime, 1000);
+        });
+
+    </script>
+
+    </div>
+</body>
+
+</html>
