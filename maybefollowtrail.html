@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pointer Trail</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .trail-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #3498db;
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const trailLength = 10; // Number of trail dots
+            const trailDots = [];
+
+            for (let i = 0; i < trailLength; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'trail-dot';
+                document.body.appendChild(dot);
+                trailDots.push(dot);
+            }
+
+            document.addEventListener('mousemove', function (event) {
+                const mouseX = event.pageX;
+                const mouseY = event.pageY;
+
+                // Update the positions of trail dots based on historical mouse coordinates
+                for (let i = trailLength - 1; i > 0; i--) {
+                    const prevDot = trailDots[i - 1];
+                    const currentDot = trailDots[i];
+
+                    currentDot.style.left = prevDot.style.left;
+                    currentDot.style.top = prevDot.style.top;
+                }
+
+                // Place the first trail dot at the current mouse position
+                trailDots[0].style.left = mouseX - 5 + 'px';
+                trailDots[0].style.top = mouseY - 5 + 'px';
+            });
+        });
+    </script>
+</body>
+
+</html>

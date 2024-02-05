@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Pointer</title>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #follower {
+            width: 50px;
+            height: 50px;
+            /* background-color: #3498db; */
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            /* Ensure the element doesn't interfere with mouse events */
+            transition: transform 10s ease-out; /* Adjusted the transition duration */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="follower">
+        <img src="images/homepage/stool.png">
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', function (event) {
+            // Get the pointer coordinates
+            const mouseX = event.pageX;
+            const mouseY = event.pageY;
+
+            // Update the position of the element to follow the pointer
+            const follower = document.getElementById('follower');
+            follower.style.left = mouseX + 'px';
+            follower.style.top = mouseY + 'px';
+        });
+    </script>
+</body>
+
+</html>
